@@ -32,7 +32,7 @@ defmodule Player do
     {:ok, player}
   end
 
-  def new_char(:bot) do
+  def new_player(:bot) do
     %__MODULE__{
       name: "Leon S. Kennedy",
       default_attack_name: "Handgun shot",

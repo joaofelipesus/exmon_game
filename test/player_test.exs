@@ -81,7 +81,7 @@ defmodule PlayerTest do
 
   describe "new_player(:bot)" do
     test "it returns always same player" do
-      player = Player.new_char(:bot)
+      player = Player.new_player(:bot)
 
       assert player.name == "Leon S. Kennedy"
       assert player.default_attack_name == "Handgun shot"
