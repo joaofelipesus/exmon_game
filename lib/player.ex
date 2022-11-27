@@ -8,4 +8,8 @@ defmodule Player do
   def default_attack do
     Enum.random(18..25)
   end
+
+  def special_attack do
+    Enum.random(10..35)
+  end
 end

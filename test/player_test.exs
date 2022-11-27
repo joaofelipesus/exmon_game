@@ -23,4 +23,12 @@ defmodule PlayerTest do
       assert attack_value <= 25
     end
   end
+
+  describe "special_attack" do
+    test "it returns a number between min and max default attack value" do
+      attack_value = Player.special_attack()
+      assert attack_value >= 10
+      assert attack_value <= 35
+    end
+  end
 end
