@@ -15,4 +15,12 @@ defmodule PlayerTest do
     assert player.cure_power_name == "Dedé speach"
     assert player.life_points == 100
   end
+
+  describe "default_attack" do
+    test "it returns a number between min and max default attack value" do
+      attack_value = Player.default_attack()
+      assert attack_value >= 18
+      assert attack_value <= 25
+    end
+  end
 end
