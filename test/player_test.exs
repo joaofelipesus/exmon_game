@@ -78,4 +78,16 @@ defmodule PlayerTest do
       assert player.life_points == 0
     end
   end
+
+  describe "new_player(:bot)" do
+    test "it returns always same player" do
+      player = Player.new_char(:bot)
+
+      assert player.name == "Leon S. Kennedy"
+      assert player.default_attack_name == "Handgun shot"
+      assert player.special_attack_name == "Shotgun shot"
+      assert player.cure_power_name == "Green herb"
+      assert player.life_points == 100
+    end
+  end
 end

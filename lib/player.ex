@@ -31,4 +31,13 @@ defmodule Player do
 
     {:ok, player}
   end
+
+  def new_char(:bot) do
+    %__MODULE__{
+      name: "Leon S. Kennedy",
+      default_attack_name: "Handgun shot",
+      special_attack_name: "Shotgun shot",
+      cure_power_name: "Green herb"
+    }
+  end
 end
