@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Setup elixir
-      uses: actions/setup-elixir@v1
+      uses: actions/setup-elixir@v2
       with:
         elixir-version: 1.12 # Define the elixir version [required]
         otp-version: 24 # Define the OTP version [required]
