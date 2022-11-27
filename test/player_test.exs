@@ -78,4 +78,28 @@ defmodule PlayerTest do
       assert player.life_points == 0
     end
   end
+
+  describe "new_player(:bot)" do
+    test "it returns always same player" do
+      player = Player.new_player(:bot)
+
+      assert player.name == "Leon S. Kennedy"
+      assert player.default_attack_name == "Handgun shot"
+      assert player.special_attack_name == "Shotgun shot"
+      assert player.cure_power_name == "Green herb"
+      assert player.life_points == 100
+    end
+  end
+
+  describe "new_player(:human)" do
+    test "it calls player for data and return a Player struct" do
+      player = Player.new_player(:human, FakeIO)
+
+      assert player.name == "José"
+      assert player.default_attack_name == "Jeb"
+      assert player.special_attack_name == "Low kick"
+      assert player.cure_power_name == "Rest"
+      assert player.life_points == 100
+    end
+  end
 end

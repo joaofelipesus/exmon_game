@@ -31,4 +31,26 @@ defmodule Player do
 
     {:ok, player}
   end
+
+  def new_player(:bot) do
+    %__MODULE__{
+      name: "Leon S. Kennedy",
+      default_attack_name: "Handgun shot",
+      special_attack_name: "Shotgun shot",
+      cure_power_name: "Green herb"
+    }
+  end
+
+  def new_player(:human, io \\ IO) do
+    name = String.trim(io.gets("Name: "))
+    default_attack_name = String.trim(io.gets("Default attack: "))
+    special_attack_name = String.trim(io.gets("Special attack: "))
+    cure_power_name = String.trim(io.gets("Cure power: "))
+    %__MODULE__{
+      name: name,
+      default_attack_name: default_attack_name,
+      special_attack_name: special_attack_name,
+      cure_power_name: cure_power_name
+    }
+  end
 end
