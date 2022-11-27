@@ -31,4 +31,12 @@ defmodule PlayerTest do
       assert attack_value <= 35
     end
   end
+
+  describe "cure_power" do
+    test "it returns a number between min and max default attack value" do
+      attack_value = Player.cure_power()
+      assert attack_value >= 18
+      assert attack_value <= 25
+    end
+  end
 end
