@@ -40,7 +40,7 @@ defmodule PlayerTest do
     end
   end
 
-  describe "update_life_points/3" do
+  describe "update_life_points(player, value, :cure_power)" do
     test "it returns a player with increased life_points when receive increase" do
       player = %Player{
         name: "José Aldo Jr.",
@@ -49,11 +49,13 @@ defmodule PlayerTest do
         cure_power_name: "Dedé speach"
       }
 
-      {:ok, player} = Player.update_life_points(player, 15, :increase)
+      {:ok, player} = Player.update_life_points(player, 15, :cure_power)
       assert player.life_points == 115
     end
+  end
 
-    test "it returns a player with decreased life_points when receive decrease" do
+  describe "update_life_points(player, value, :default_attack)" do
+    test "it returns a player with decreased life_points when receive default_attack action" do
       player = %Player{
         name: "José Aldo Jr.",
         default_attack_name: "jeb",
@@ -61,11 +63,13 @@ defmodule PlayerTest do
         cure_power_name: "Dedé speach"
       }
 
-      {:ok, player} = Player.update_life_points(player, 20, :decrease)
+      {:ok, player} = Player.update_life_points(player, 20, :default_attack)
       assert player.life_points == 80
     end
+  end
 
-    test "it returns when receive decrease and a value bigger than life_points" do
+  describe "update_life_points(player, value, :special_attack)" do
+    test "it returns a player with decreased life_points when receive special_attack action" do
       player = %Player{
         name: "José Aldo Jr.",
         default_attack_name: "jeb",
@@ -74,7 +78,7 @@ defmodule PlayerTest do
         life_points: 15
       }
 
-      {:ok, player} = Player.update_life_points(player, 20, :decrease)
+      {:ok, player} = Player.update_life_points(player, 20, :special_attack)
       assert player.life_points == 0
     end
   end
@@ -83,22 +87,22 @@ defmodule PlayerTest do
     test "it returns always same player" do
       player = Player.new_player(:bot)
 
-      assert player.name == "Leon S. Kennedy"
-      assert player.default_attack_name == "Handgun shot"
-      assert player.special_attack_name == "Shotgun shot"
-      assert player.cure_power_name == "Green herb"
+      assert player.name == "Nemesis"
+      assert player.default_attack_name == "Punch"
+      assert player.special_attack_name == "Rocket launcher"
+      assert player.cure_power_name == "Regenerate"
       assert player.life_points == 100
     end
   end
 
   describe "new_player(:human)" do
     test "it calls player for data and return a Player struct" do
-      player = Player.new_player(:human, FakeIO)
+      player = Player.new_player(:human)
 
-      assert player.name == "José"
-      assert player.default_attack_name == "Jeb"
-      assert player.special_attack_name == "Low kick"
-      assert player.cure_power_name == "Rest"
+      assert player.name == "Leon S. Kennedy"
+      assert player.default_attack_name == "Handgun shot"
+      assert player.special_attack_name == "Shotgun shot"
+      assert player.cure_power_name == "Green herb"
       assert player.life_points == 100
     end
   end
